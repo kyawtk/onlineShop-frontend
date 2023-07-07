@@ -1,0 +1,42 @@
+.product{
+    padding: 1rem;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.product-info{
+    display: flex;
+     max-width: 40%;
+     padding: 2rem;
+    flex-direction: column;
+    gap: 20px;
+    button{
+        width: 200px;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    button:hover{
+        outline: 2px solid black;
+    }
+}
+
+.product-img{
+   width: 50%;
+   max-height: 70vh;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .product-img{
+        width: 90%;
+    }
+    .product-info{
+        max-width: 90%;
+    }
+}

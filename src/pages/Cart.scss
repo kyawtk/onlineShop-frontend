@@ -1,0 +1,53 @@
+.cart{
+
+}
+
+
+
+table{
+    
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+th:nth-child(1) {
+  width: 50%;
+}
+th{
+    text-align: center;
+    background-color: gray;
+}
+
+td{
+    
+    border: 1px solid grey;
+    padding: 1rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    vertical-align: center;
+    .td-img{
+        width: 100px;
+    }
+    img{
+
+        max-width: 100%;
+        
+        
+       vertical-align: text-top;
+        object-fit: contain;
+    }
+}
+
+.checkout-btn{
+    margin:20px auto;
+    font-size: 1.3rem;
+    color: white;
+    width: 200px;
+    text-align: center;
+    vertical-align: center  ;
+    display: block;
+    padding: 3rem;
+    border-radius: 10px;
+    background-color: green;
+}

@@ -1,0 +1,26 @@
+nav{
+    color: black;
+    position: sticky;
+    top: 0;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    
+    h1{
+        color: black;
+        font-size: 2rem;
+    }
+    ul{
+        list-style: none;
+        li{
+            
+            display: inline-block;
+            margin: auto 20px;
+            a{
+                color: inherit;
+            }
+        }
+    }
+}
