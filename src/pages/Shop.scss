@@ -25,3 +25,21 @@
     
 
 }
+
+.sidebar{
+    ul{
+        display: flex;
+        gap: 50px;
+        list-style-type: none;
+        li{
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        li:hover{
+            background-color: whitesmoke;
+            transform: scale(1.1);
+        }
+    }
+    
+}

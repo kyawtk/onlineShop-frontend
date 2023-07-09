@@ -3,6 +3,8 @@ import { ShopContext } from "../context/shopContext";
 import { Link, useSearchParams } from "react-router-dom";
 import "./Shop.scss";
 import useFetch from "../hooks/useFetch";
+import { motion } from "framer-motion";
+import loadingGif from '../assets/images/spinner.gif'
 const Shop = () => {
   // const [products,loading] = useContext(ShopContext)
   const [loading, setLoading] = useState(true);
@@ -16,19 +18,37 @@ const Shop = () => {
     }
   }, [products]);
   return (
-    <div className="shop">
-      {loading && <h1>Loading</h1>}
-      <Sidebar setUrl={setUrl} setLoading={setLoading}> </Sidebar>
-      {products.map((product) => {
+    <motion.div
+      transition={{
+        duration: 0.5,
+      }}
+      initial={{
+        opacity: 0,
+      }}
+      animate={{
+        opacity: 1,
+      }}
+      exit={{
+        opacity: 0,
+        
+      }}
+      className="shop"
+    >
+      
+      <Sidebar setUrl={setUrl} setLoading={setLoading}>
+        {" "}
+      </Sidebar>
+      {loading? <img className="loadinggif" src={loadingGif}/>: <>{products.map((product) => {
         return <ProductCard key={product.id} product={product}></ProductCard>;
-      })}
-    </div>
+      })}</>}
+     
+    </motion.div>
   );
 };
 
 export default Shop;
 
-function Sidebar({ setUrl ,setLoading}) {
+function Sidebar({ setUrl, setLoading }) {
   const categories = useFetch("https://fakestoreapi.com/products/categories");
   return (
     <div className="sidebar">
@@ -41,7 +61,7 @@ function Sidebar({ setUrl ,setLoading}) {
                 setUrl(
                   `https://fakestoreapi.com/products/category/${category}`
                 );
-                setLoading(true)
+                setLoading(true);
               }}
             >
               {category}
