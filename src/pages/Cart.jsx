@@ -5,7 +5,7 @@ import "./Cart.scss";
 const Cart = () => {
   const { items, increaseQuantity, decreaseQuantity } = useContext(CartContext);
   let total = 0;
-  items.forEach((item) => (total = total + item.quantity * item.price));
+  items.forEach((item) => (total = total + item.quantity * item.price *3000));
 
 
   const jsonFileDownload = () => {
@@ -22,51 +22,30 @@ const Cart = () => {
 
   return (
     <div className="cart">
-      <table>
-        <tr>
-          <th>Item</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Total</th>
-        </tr>
+      
+
+      
+      <div className="items">
         {items.map((item) => {
-          return (
-            <tr key={item.id}>
-              <td>
-                <div className="td-img"><img src={item.image} alt="" /></div>
-                
-                <span>{item.title}</span>
-              </td>
-              <td>{item.price*3000} Kyats</td>
-              <td>
-                
-                <span>
-                  <FaMinusSquare
-                    onClick={() => {
-                      decreaseQuantity(item.id);
-                    }}
-                  />
-                  {item.quantity}{" "}
-                  <FaPlusSquare onClick={() => increaseQuantity(item.id)} />
-                </span>
-              </td>
-              <td>
-                {item.quantity* item.price *3000} Kyats
-              </td>
-            </tr>
-          );
-        })}
-
-        <tr>
-          <th colSpan={3}>Total</th>
-          <td>{total*3000}</td>
-        </tr>
-      </table>
-
-      <a className="checkout-btn" href={jsonFileDownload()} download={'yourShoppingBag.json'}>Checkout</a>
-      {/* {items.map((item) => {
         return <CartItem key={item.id} {...item}></CartItem>;
-      })} */}
+      })}
+      </div>
+      <div className="sidebar checkout">
+        <table>
+          <tr>
+            <th>Total</th>
+            <td>{total}</td>
+          </tr>
+          <tr>
+            <th>Shipping</th>
+            <td>Free</td>
+          </tr>
+          <tr><th>Final Total</th>
+          <td>{total}</td></tr>
+          
+        </table>
+        <a className="checkout-btn" href={jsonFileDownload()} download={'yourShoppingBag.json'}>Checkout</a>
+      </div>
     </div>
   );
 };
@@ -82,9 +61,10 @@ function CartItem({ title, image, id, quantity, price }) {
           <img src={image} alt={title} />
         </div>
         <div className="cart-info">
-          <p>
-            {title}: {price}
-          </p>
+          <h2>
+            {title}
+          </h2>
+          <b>{price*3000} Kyats</b>
           <span>
             <FaMinusSquare
               onClick={() => {
@@ -93,8 +73,9 @@ function CartItem({ title, image, id, quantity, price }) {
             />
             {quantity} <FaPlusSquare onClick={() => increaseQuantity(id)} />
           </span>
+          <b>Total : {price* quantity* 3000} kyats</b>
         </div>
-        <div className="billing"></div>
+       
       </div>
     </>
   );
